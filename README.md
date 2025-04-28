@@ -37,7 +37,7 @@ You need to add the following to your project's build.gradle file to use GitHub 
 allprojects {
     repositories {
         maven {
-            setUrl("https://maven.pkg.github.com/hyperledger/aries-framework-kotlin")
+            setUrl("https://maven.pkg.github.com/LF-Decentralized-Trust-labs/aries-framework-kotlin")
             credentials {
                 // You should put these in the local.properties file
                 username = "your github username"
