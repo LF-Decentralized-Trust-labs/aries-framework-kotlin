@@ -34,7 +34,7 @@ dependencyResolutionManagement {
         mavenLocal()
         mavenCentral()
         maven {
-            setUrl("https://maven.pkg.github.com/hyperledger/aries-uniffi-wrappers")
+            setUrl("https://maven.pkg.github.com/LF-Decentralized-Trust-labs/aries-uniffi-wrappers")
             credentials {
                 username = getExtraString("githubUsername")
                 password = getExtraString("githubToken")

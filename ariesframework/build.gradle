@@ -103,7 +103,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "github"
-                setUrl("https://maven.pkg.github.com/hyperledger/aries-framework-kotlin")
+                setUrl("https://maven.pkg.github.com/LF-Decentralized-Trust-labs/aries-framework-kotlin")
                 credentials {
                     username = getExtraString("githubUsername")
                     password = getExtraString("githubToken")
