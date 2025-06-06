@@ -5,10 +5,12 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.Serializable
 import org.hyperledger.ariesframework.Tags
-import org.hyperledger.ariesframework.credentials.models.AutoAcceptCredential
+import org.hyperledger.ariesframework.credentials.CredentialsConstants
 import org.hyperledger.ariesframework.credentials.models.CredentialPreviewAttribute
+import org.hyperledger.ariesframework.credentials.models.CredentialRole
 import org.hyperledger.ariesframework.credentials.models.CredentialState
-import org.hyperledger.ariesframework.credentials.models.IndyCredentialView
+import org.hyperledger.ariesframework.credentials.models.AutoAcceptCredential
+import org.hyperledger.ariesframework.credentials.v1.models.IndyCredentialView
 import org.hyperledger.ariesframework.storage.BaseRecord
 
 @Serializable
@@ -28,6 +30,7 @@ data class CredentialExchangeRecord(
 
     var connectionId: String,
     var threadId: String,
+    var parentThreadId: String? = null,
     var state: CredentialState,
     var autoAcceptCredential: AutoAcceptCredential? = null,
     var errorMessage: String? = null,
@@ -36,6 +39,7 @@ data class CredentialExchangeRecord(
     var credentialAttributes: List<CredentialPreviewAttribute>? = null,
     var indyRequestMetadata: String? = null,
     var credentialDefinitionId: String? = null,
+    var role: CredentialRole? = null,
 ) : BaseRecord() {
     override fun getTags(): Tags {
         val tags = (_tags ?: mutableMapOf()).toMutableMap()
@@ -66,6 +70,24 @@ data class CredentialExchangeRecord(
     fun assertState(vararg expectedStates: CredentialState) {
         if (!expectedStates.contains(this.state)) {
             throw Exception("Credential record is in invalid state ${this.state}. Valid states are: $expectedStates")
+        }
+    }
+
+    fun setToState(newState: CredentialState) {
+        this.state = newState
+    }
+
+    fun setToProtocolVersionV1() {
+        this.protocolVersion = CredentialsConstants.PROTOCOL_VERSION_V1
+    }
+
+    fun setToProtocolVersionV2() {
+        this.protocolVersion = CredentialsConstants.PROTOCOL_VERSION_V2
+    }
+
+    fun assertRole(vararg expectedRoles: CredentialRole) {
+        if (!expectedRoles.contains(this.role)) {
+            throw Exception("Credential record is in invalid role ${this.role}. Valid roles are: $expectedRoles")
         }
     }
 

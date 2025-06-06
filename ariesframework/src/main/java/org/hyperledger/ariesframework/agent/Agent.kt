@@ -14,9 +14,11 @@ import org.hyperledger.ariesframework.connection.DidExchangeService
 import org.hyperledger.ariesframework.connection.JwsService
 import org.hyperledger.ariesframework.connection.PeerDIDService
 import org.hyperledger.ariesframework.connection.repository.ConnectionRepository
-import org.hyperledger.ariesframework.credentials.CredentialService
-import org.hyperledger.ariesframework.credentials.CredentialsCommand
 import org.hyperledger.ariesframework.credentials.repository.CredentialExchangeRepository
+import org.hyperledger.ariesframework.credentials.v1.CredentialService
+import org.hyperledger.ariesframework.credentials.v1.CredentialsCommand
+import org.hyperledger.ariesframework.credentials.v2.CredentialServiceV2
+import org.hyperledger.ariesframework.credentials.v2.CredentialsCommandV2
 import org.hyperledger.ariesframework.ledger.LedgerService
 import org.hyperledger.ariesframework.oob.OutOfBandCommand
 import org.hyperledger.ariesframework.oob.OutOfBandService
@@ -53,7 +55,9 @@ class Agent(val context: Context, val agentConfig: AgentConfig) {
     val revocationRegistryRepository = RevocationRegistryRepository(this)
     val anoncredsService = AnoncredsService(this)
     val credentialService = CredentialService(this)
+    val credentialServiceV2 = CredentialServiceV2(this)
     val credentials = CredentialsCommand(this, dispatcher)
+    val credentialsV2 = CredentialsCommandV2(this, dispatcher)
     val credentialRepository = CredentialRepository(this)
     val revocationService = RevocationService(this)
     val proofRepository = ProofRepository(this)
