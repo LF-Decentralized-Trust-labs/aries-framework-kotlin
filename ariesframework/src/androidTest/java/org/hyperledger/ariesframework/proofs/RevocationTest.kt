@@ -8,10 +8,10 @@ import org.hyperledger.ariesframework.TestHelper
 import org.hyperledger.ariesframework.agent.Agent
 import org.hyperledger.ariesframework.connection.repository.ConnectionRecord
 import org.hyperledger.ariesframework.credentials.models.AutoAcceptCredential
-import org.hyperledger.ariesframework.credentials.models.CreateOfferOptions
-import org.hyperledger.ariesframework.credentials.models.CredentialPreview
 import org.hyperledger.ariesframework.credentials.models.CredentialState
 import org.hyperledger.ariesframework.credentials.repository.CredentialExchangeRecord
+import org.hyperledger.ariesframework.credentials.v1.CreateOfferOptions
+import org.hyperledger.ariesframework.credentials.v1.models.CredentialPreview
 import org.hyperledger.ariesframework.ledger.CredentialDefinitionTemplate
 import org.hyperledger.ariesframework.ledger.RevocationRegistryDefinitionTemplate
 import org.hyperledger.ariesframework.ledger.SchemaTemplate

@@ -15,4 +15,5 @@ sealed interface AgentEvents {
     class ProofEvent(val record: ProofExchangeRecord) : AgentEvents
     class BasicMessageEvent(val message: String) : AgentEvents
     class ProblemReportEvent(val message: BaseProblemReportMessage) : AgentEvents
+    class CredentialEventV2(val record: CredentialExchangeRecord) : AgentEvents
 }
